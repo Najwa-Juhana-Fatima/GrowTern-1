@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Courses</title>
+<style>
+    body {
+        font-family: Poppins, sans-serif;
+        background: linear-gradient(to right, #6a85ff, #8360c3);
+        margin: 0;
+        padding: 40px;
+        color: #fff;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .course-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    .course-card {
+        background: rgba(255,255,255,0.2);
+        padding: 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .course-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.35);
+    }
+    .course-card h3 {
+        margin-top: 0;
+    }
+    a.button {
+        display: inline-block;
+        background: white;
+        color: #6a85ff;
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<h1>Explore Internship-Focused Courses</h1>
+
+<div class="course-container">
+
+    <div class="course-card">
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript, React - Build real projects and get internship ready!</p>
+        <a class="button" href="#">Start Course</a>
+    </div>
+
+    <div class="course-card">
+        <h3>Data Science & AI</h3>
+        <p>Python, ML, Pandas, Projects for tech internships.</p>
+        <a class="button" href="#">Start Course</a>
+    </div>
+
+    <div class="course-card">
+        <h3>UI/UX Design</h3>
+        <p>Figma, Prototyping, UX Cases for design internships.</p>
+        <a class="button" href="#">Start Course</a>
+    </div>
+
+    <div class="course-card">
+        <h3>Digital Marketing</h3>
+        <p>SEO, Google Ads, Social Media campaigns basics.</p>
+        <a class="button" href="#">Start Course</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+/* Global Style */
+body {
+    margin: 0;
+    font-family: cursive, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: rgb(243, 244, 246);
+}
+
+/* Parallax Header */
+.hero {
+    height: 60vh;
+    background: url("https://images.unsplash.com/photo-1587614382346-a83a483a2f59")
+        center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.hero h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: aliceblue;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Section Title */
+.internship-section h2 {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 2.5rem;
+}
+
+/* Internship Cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.card {
+    width: 300px;
+    height: 220px;
+    background: rgb(9, 9, 9);
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(245, 243, 243, 0.1);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(10deg) rotateY(5deg);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.2);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.card button {
+    margin-top: 15px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    background: #4361ee;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background: #3046c7;
+}

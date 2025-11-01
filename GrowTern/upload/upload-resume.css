@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f1f4ff;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1d1d1d;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Upload Box */
+.upload-section {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-box {
+    width: 420px;
+    padding: 40px;
+    border: 2px dashed #4361ee;
+    background: #fff;
+    border-radius: 18px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.upload-box:hover {
+    border-color: #2339c4;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.upload-icon {
+    width: 80px;
+    opacity: 0.8;
+}
+
+.browse-btn {
+    padding: 10px 25px;
+    background: #4361ee;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.browse-btn:hover {
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     color: rgb(243, 244, 246);
+}    
+
+
+.file-details {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.upload-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    margin-top: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.upload-btn:hover {
+    background: #1e8c39;
+}

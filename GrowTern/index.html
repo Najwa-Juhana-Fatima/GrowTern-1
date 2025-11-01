@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowTern - Get Skilled, Get Placed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: rgb(243, 244, 246);
+            padding: 8rem 4rem 2rem;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 40px;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            font-size: 2rem;
+            margin-bottom: 1.7rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Search & Filters */
+        .search-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            min-width: 250px;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Stats Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Internship Cards */
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .internship-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .bookmark-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .internship-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .company-name {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .internship-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .skill-match {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .skill-match-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: width 0.5s ease;
+        }
+
+        .missing-skills {
+            font-size: 0.85rem;
+            color: #e74c3c;
+            margin-top: 0.5rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 0.8rem;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .stipend {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 1rem 0;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .learning-path {
+            margin: 2rem 0;
+        }
+
+        .path-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            align-items: center;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .internships-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                GrowTern
+                <span class="tagline">| Get Skilled, Get Placed</span>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>            
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Perfect Internship</h1>
+        <p>Get Skilled, Get Placed</p>
+        <div class="hero-buttons">
+            <a href="explore/explore-internships.html" class="btn btn-primary">Explore Internships</a>
+            <a href="upload/upload-resume.html" class="btn btn-primary">Upload Resume</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search internships by role, company, or skills...">
+                <button class="btn btn-primary" onclick="searchInternships()">Search</button>
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterInternships('all')">All</button>
+                <button class="filter-btn" onclick="filterInternships('remote')">🌍 Remote</button>
+                <button class="filter-btn" onclick="filterInternships('hyderabad')">📍 Hyderabad</button>
+                <button class="filter-btn" onclick="filterInternships('tech')">💻 Tech</button>
+                <button class="filter-btn" onclick="filterInternships('design')">🎨 Design</button>
+                <button class="filter-btn" onclick="filterInternships('marketing')">📢 Marketing</button>
+            </div>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">156</div>
+                <div class="stat-label">Active Internships</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">89%</div>
+                <div class="stat-label">Profile Strength</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Skills Learned</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Applications Sent</div>
+            </div>
+        </div>
+
+        <!-- Internships Grid -->
+        <h2 style="margin-bottom: 2rem; color: #333;">Available Internships</h2>
+        <div class="internships-grid" id="internshipsGrid"></div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="internshipModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GrowTern. Empowering students with skills and opportunities.</p>
+        <p>Get Skilled, Get Placed</p>
+    </footer>
+
+    <script>
+        const internships = [
+            {
+                id: 1,
+                title: "Frontend Developer",
+                company: "TechCorp",
+                location: "Remote",
+                duration: "3 months",
+                stipend: "₹15,000/month",
+                skills: ["React", "JavaScript", "CSS", "HTML", "Git"],
+                userSkills: ["HTML", "CSS", "JavaScript"],
+                category: "tech",
+                description: "Work on exciting web applications using modern frontend technologies.",
+                eligibility: ["Currently pursuing B.Tech/B.E.", "Strong problem-solving skills", "Good communication"]
+            },
+            {
+                id: 2,
+                title: "Data Analyst",
+                company: "DataViz Inc",
+                location: "Hyderabad",
+                duration: "6 months",
+                stipend: "₹12,000/month",
+                skills: ["Python", "SQL", "Excel", "Power BI", "Statistics"],
+                userSkills: ["Python", "Excel"],
+                category: "tech",
+                description: "Analyze large datasets and create insightful visualizations.",
+                eligibility: ["Knowledge of statistics", "Programming background", "Analytical mindset"]
+            },
+            {
+                id: 3,
+                title: "UI/UX Designer",
+                company: "DesignHub",
+                location: "Remote",
+                duration: "4 months",
+                stipend: "₹10,000/month",
+                skills: ["Figma", "Adobe XD", "User Research", "Prototyping", "Wireframing"],
+                userSkills: ["Figma", "User Research"],
+                category: "design",
+                description: "Create stunning user interfaces and improve user experience.",
+                eligibility: ["Portfolio required", "Design thinking knowledge", "Creative mindset"]
+            },
+            {
+                id: 4,
+                title: "Digital Marketing",
+                company: "GrowthLabs",
+                location: "Bangalore",
+                duration: "3 months",
+                stipend: "₹8,000/month",
+                skills: ["SEO", "Content Writing", "Google Analytics", "Social Media", "Email Marketing"],
+                userSkills: ["Content Writing", "Social Media", "SEO"],
+                category: "marketing",
+                description: "Drive digital marketing campaigns and boost online presence.",
+                eligibility: ["Strong writing skills", "Social media savvy", "Creative thinking"]
+            },
+            {
+                id: 5,
+                title: "Backend Developer",
+                company: "CloudSystems",
+                location: "Hyderabad",
+                duration: "6 months",
+                stipend: "₹18,000/month",
+                skills: ["Node.js", "MongoDB", "Express", "REST API", "AWS"],
+                userSkills: ["Node.js", "MongoDB"],
+                category: "tech",
+                description: "Build scalable backend systems and APIs.",
+                eligibility: ["Knowledge of databases", "Server-side programming", "Problem-solving skills"]
+            },
+            {
+                id: 6,
+                title: "Content Writer",
+                company: "MediaWorks",
+                location: "Remote",
+                duration: "3 months",
+                stipend: "₹7,000/month",
+                skills: ["Content Writing", "SEO", "Research", "Editing", "WordPress"],
+                userSkills: ["Content Writing", "Research", "SEO", "Editing"],
+                category: "marketing",
+                description: "Create engaging content for blogs, websites, and social media.",
+                eligibility: ["Excellent writing skills", "Research ability", "Grammar proficiency"]
+            }
+        ];
+
+        function calculateMatch(required, userHas) {
+            const matches = required.filter(skill => userHas.includes(skill)).length;
+            return Math.round((matches / required.length) * 100);
+        }
+
+        function getMissingSkills(required, userHas) {
+            return required.filter(skill => !userHas.includes(skill));
+        }
+
+        function renderInternships(filter = 'all', searchTerm = '') {
+            const grid = document.getElementById('internshipsGrid');
+            let filtered = internships;
+
+            if (filter !== 'all') {
+                if (filter === 'remote') {
+                    filtered = internships.filter(i => i.location.toLowerCase() === 'remote');
+                } else if (filter === 'hyderabad') {
+                    filtered = internships.filter(i => i.location.toLowerCase().includes('hyderabad'));
+                } else {
+                    filtered = internships.filter(i => i.category === filter);
+                }
+            }
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(i => 
+                    i.title.toLowerCase().includes(term) ||
+                    i.company.toLowerCase().includes(term) ||
+                    i.skills.some(s => s.toLowerCase().includes(term))
+                );
+            }
+
+            grid.innerHTML = filtered.map(internship => {
+                const match = calculateMatch(internship.skills, internship.userSkills);
+                const missing = getMissingSkills(internship.skills, internship.userSkills);
+                const companyInitial = internship.company[0];
+
+                return `
+                    <div class="internship-card" onclick="openModal(${internship.id})">
+                        <button class="bookmark-btn" onclick="event.stopPropagation(); toggleBookmark(${internship.id})">🔖</button>
+                        <div class="company-logo">${companyInitial}</div>
+                        <div class="internship-title">${internship.title}</div>
+                        <div class="company-name">${internship.company}</div>
+                        <div class="internship-meta">
+                            <span class="meta-item">📍 ${internship.location}</span>
+                            <span class="meta-item">⏱️ ${internship.duration}</span>
+                        </div>
+                        
+                        <div class="skill-match">
+                            <div class="skill-match-title">Skill Match</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${match}%">${match}% Ready</div>
+                            </div>
+                            ${missing.length > 0 ? `
+                                <div class="missing-skills">
+                                    Missing: ${missing.join(', ')} → <a href="#" onclick="event.stopPropagation(); showLearningPath(${internship.id})">Take free courses</a>
+                                </div>
+                            ` : '<div style="color: #27ae60; font-size: 0.85rem;">✓ You meet all requirements!</div>'}
+                        </div>
+
+                        <div class="skills-tags">
+                            ${internship.skills.slice(0, 3).map(skill => 
+                                `<span class="skill-tag">${skill}</span>`
+                            ).join('')}
+                            ${internship.skills.length > 3 ? `<span class="skill-tag">+${internship.skills.length - 3} more</span>` : ''}
+                        </div>
+
+                        <div class="stipend">${internship.stipend}</div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="event.stopPropagation(); applyInternship(${internship.id})">
+                            ${match === 100 ? 'Apply Now' : 'View Details'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openModal(id) {
+            const internship = internships.find(i => i.id === id);
+            const match = calculateMatch(internship.skills, internship.userSkills);
+            const missing = getMissingSkills(internship.skills, internship.userSkills);
+
+            const modalContent = `
+                <h2>${internship.title}</h2>
+                <h3 style="color: #666; margin-bottom: 2rem;">${internship.company}</h3>
+                
+                <div style="margin-bottom: 2rem;">
+                    <p><strong>Location:</strong> ${internship.location}</p>
+                    <p><strong>Duration:</strong> ${internship.duration}</p>
+                    <p><strong>Stipend:</strong> ${internship.stipend}</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3>About the Role</h3>
+                    <p>${internship.description}</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3>Eligibility Criteria</h3>
+                    <ul style="margin-left: 1.5rem;">
+                        ${internship.eligibility.map(e => `<li>${e}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="skill-match" style="margin-bottom: 2rem;">
+                    <h3>Your Skill Match</h3>
+                    <div class="progress-bar" style="margin-top: 1rem;">
+                        <div class="progress-fill" style="width: ${match}%">${match}% Ready</div>
+                    </div>
+                    <p style="margin-top: 1rem;">You match ${internship.userSkills.length} out of ${internship.skills.length} required skills.</p>
+                </div>
+
+                ${missing.length > 0 ? `
+                    <div class="learning-path">
+                        <h3>📚 Your Learning Path to Qualify</h3>
+                        <p style="margin-bottom: 1rem; color: #666;">Complete these courses to become 100% eligible:</p>
+                        ${missing.map((skill, index) => `
+                            <div class="path-step">
+                                <div class="step-number">${index + 1}</div>
+                                <div class="step-content">
+                                    <div class="step-title">${skill} Fundamentals</div>
+                                    <div class="step-duration">⏱️ 2-3 hours • Free on Coursera</div>
+                                </div>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">Start</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+
+                <div style="margin-top: 2rem;">
+                    <h3>🎯 Interview Prep</h3>
+                    <p style="margin: 1rem 0; color: #666;">Top questions asked for this role:</p>
+                    <ul style="margin-left: 1.5rem; color: #666;">
+                        <li>Explain your experience with the required technologies</li>
+                        <li>Walk us through a challenging project</li>
+                        <li>How do you handle tight deadlines?</li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%; margin-top: 2rem; padding: 1rem;" onclick="applyInternship(${id})">
+                    ${match === 100 ? '✓ Apply for this Internship' : '📧 Get Notified When Eligible'}
+                </button>
+            `;
+
+            document.getElementById('modalContent').innerHTML = modalContent;
+            document.getElementById('internshipModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('internshipModal').style.display = 'none';
+        }
+
+        function filterInternships(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderInternships(filter);
+        }
+
+        function searchInternships() {
+            const searchTerm = document.getElementById('searchInput').value;
+            renderInternships('all', searchTerm);
+        }
+
+        function toggleBookmark(id) {
+            alert(`Internship ${id} bookmarked! You can find it in your saved items.`);
+        }
+
+        function applyInternship(id) {
+            const internship = internships.find(i => i.id === id);
+            const match = calculateMatch(internship.skills, internship.userSkills);
+            
+            if (match === 100) {
+                alert(`🎉 Application submitted for ${internship.title} at ${internship.company}!\n\nYou'll receive a confirmation email shortly.`);
+            } else {
+                alert(`📧 We'll notify you once you complete the required courses!\n\nYou're ${match}% ready. Keep learning!`);
+            }
+            closeModal();
+        }
+
+        function showLearningPath(id) {
+            openModal(id);
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('internshipModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Initialize
+        renderInternships();
+    </script>
+</body>
+</html>
